@@ -1,0 +1,14 @@
+{
+  "name": "clarify",
+  "displayName": "Clarify",
+  "version": "1.0.0",
+  "description": "Asks you sharp clarifying questions about a prompt before doing any work, then hands back a better prompt.",
+  "author": {
+    "name": "Ronak Rupani",
+    "url": "https://github.com/ronakrupani"
+  },
+  "homepage": "https://github.com/ronakrupani/clarify",
+  "repository": "https://github.com/ronakrupani/clarify",
+  "license": "MIT",
+  "keywords": ["prompt-engineering", "clarifying-questions", "skill"]
+}
