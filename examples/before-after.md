@@ -2,6 +2,8 @@
 
 These are real runs of `/clarify` in Claude Code 2.1.319 with Opus 5.5, installed as a plugin from this repo. Each run started in a fresh session in an empty folder, so there was no project for Claude to read. The dementia app and the signup bug are made up for testing.
 
+The chat version in `claude-ai/clarify` was also tried in claude.ai with prompt 1. It asked a round of four questions and a follow-up round of two, then showed the rewrite and the run, edit, or copy question. That transcript is not included here because the skill pulled private project details from the account's memory while looking before asking.
+
 In Claude Code the questions show up as clickable options. Here they are written out as lists, with the options Claude offered under each question and the answer that was picked below them. Lines in italics are tools Claude used while looking around before asking.
 
 ## 1. A vague prompt
