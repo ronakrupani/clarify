@@ -1,14 +1,12 @@
 # Before and after
 
-These are real runs of `/clarify` in Claude Code 2.1.319 with Opus 5.5, installed as a plugin from this repo. Each run started in a fresh session in an empty folder, so there was no project for Claude to read. The dementia app and the signup bug are made up for testing.
+These are real runs of `/clarify` in Claude Code 2.1.319 with Opus 5.5. Each run started in a fresh session in an empty folder, so there was no project for Claude to read. The dementia app and the signup bug are made up for testing.
 
-The chat version in `claude-ai/clarify` was also tried in claude.ai with prompt 1. It asked a round of four questions and a follow-up round of two, then showed the rewrite and the run, edit, or copy question. That transcript is not included here because the skill pulled private project details from the account's memory while looking before asking.
+In Claude Code the questions show up as clickable options. Here they are written out as lists, with the options Claude offered under each question and the answer that was picked below them. Lines in italics are tools Claude used, first while looking around before asking and then while doing the work.
 
-In Claude Code the questions show up as clickable options. Here they are written out as lists, with the options Claude offered under each question and the answer that was picked below them. Lines in italics are tools Claude used while looking around before asking.
+## 1. A vague request
 
-## 1. A vague prompt
-
-This one should get a full round of questions.
+This one should get a full round of questions, then the work.
 
 **You:**
 
@@ -16,63 +14,84 @@ This one should get a full round of questions.
 /clarify build me a landing page for my dementia app
 ```
 
-*Claude used Bash: List files in working directory*
-
 **Claude asks** (AskUserQuestion):
 
-1. **App & goal**: What does the dementia app do, and what should the landing page get visitors to do?
-   - Caregiver tool, sign-ups: An app that helps family caregivers (reminders, care notes, coordination). The page collects early-access or waitlist sign-ups.
-   - Patient aid, downloads: An app used by people living with dementia (memory prompts, daily routines). The page sends visitors to the App Store or Google Play.
-   - Clinical tool, demo requests: A tool for clinicians or care facilities (screening, monitoring). The page collects demo requests.
-2. **Audience**: Who is the main audience the landing page copy and design should speak to?
-   - Family caregivers: Adult children and spouses caring for someone with dementia.
-   - People with dementia: Early-stage users themselves. This calls for large type, high contrast and very plain language.
-   - Clinicians/facilities: Doctors, care homes and health systems. Copy is more clinical and evidence-focused.
-3. **Format**: What should the landing page be built as?
-   - Single HTML file (Recommended): One self-contained page with no build step. Easy to preview, share, or host anywhere.
-   - Next.js app: A Next.js + Tailwind project in this empty folder, ready to deploy to Vercel.
-   - Shareable preview page: A hosted private preview link you can send to others for feedback.
-4. **Have ready**: Which details do you already have that the page should use? Anything you don't pick gets placeholder text. (pick any)
-   - App name: You'll give the app's name in your answer.
-   - Feature list: You'll list the app's key features in your answer.
-   - Brand colors/logo: You'll give brand colors or a logo file.
-   - Pricing: You'll share pricing to show on the page.
+1. **Audience**: Who is the dementia app's landing page mainly speaking to?
+   - Family caregivers: Adult children or spouses caring for someone with dementia; the copy speaks to their stress and peace of mind.
+   - People with dementia: People in early-stage dementia using the app themselves; very large text, simple language, calm design.
+   - Care facilities: Memory-care homes, clinics or care agencies; B2B tone that covers outcomes, compliance and staff workflow.
+2. **Main action**: What should a visitor do on the page?
+   - Join a waitlist (Recommended): An email signup form for a pre-launch app.
+   - Download the app: App Store and Google Play buttons for an app that is already live.
+   - Book a demo: A contact or demo-request form, which suits selling to facilities.
+3. **Features**: What does the dementia app do? Pick everything the page should feature. (pick any)
+   - Reminders & routines: Medication, meals, appointments and daily schedules.
+   - Memory aids: Photos, names of familiar faces, life stories, reminiscence.
+   - Safety & location: Wandering alerts, geofencing, emergency contacts.
+   - Caregiver coordination: Shared updates, task handoffs and activity logs for the family or care team.
+4. **Deliverable**: What form should the landing page come in? The current folder is empty.
+   - Shareable page link (Recommended): A hosted, private-by-default web page you can view and share right away.
+   - Next.js project: A Next.js project in this folder that you can deploy to Vercel.
+   - Single HTML file: One self-contained index.html you can host anywhere.
 
 **You answered:**
 
-- What does the dementia app do, and what should the landing page get visitors to do? **Caregiver tool, sign-ups**
-- Who is the main audience the landing page copy and design should speak to? **Family caregivers**
-- What should the landing page be built as? **Single HTML file (Recommended)**
-- Which details do you already have that the page should use? Anything you don't pick gets placeholder text. **"None yet, use placeholders"**
+- Who is the dementia app's landing page mainly speaking to? **Family caregivers**
+- What should a visitor do on the page? **Join a waitlist (Recommended)**
+- What does the dementia app do? Pick everything the page should feature. **Reminders & routines, Memory aids**
+- What form should the landing page come in? The current folder is empty. **Single HTML file**
+
+*Claude used Skill: frontend-design:frontend-design*
+
+*Claude used Write: ~/test/index.html*
 
 **Claude:**
 
-Here is the rewritten prompt:
+Now I'll take screenshots to check the layout at desktop and phone widths.
 
-```text
-Build me a landing page for my dementia app.
+*Claude used Bash: Render desktop and mobile screenshots with headless Chrome*
 
-The app is a tool for family caregivers: adult children and spouses who look after someone with dementia. It helps them with things like reminders, care notes, and coordinating care. The landing page should get visitors to sign up for early access or the waitlist.
+*Claude used Read: ~/test/7f7*
 
-Write the copy and design for family caregivers.
+*Claude used Read: ~/test/7f7*
 
-Build it as one self-contained HTML file with no build step, so it's easy to preview, share, or host anywhere.
+*Claude used Bash: Screenshot the page inside a 390px-wide iframe*
 
-I don't have an app name, feature list, brand colors, logo, or pricing yet. Use clearly marked placeholders for all of these so I can swap them in later.
-```
+*Claude used Read: ~/test/7f7*
 
-Run it now, edit it first, or just copy it?
+*Claude used Edit: ~/test/index.html*
 
-**You:** just copy it
+*Claude used Bash: Re-render the mobile hero after fixes*
+
+*Claude used Read: ~/test/7f7*
+
+*Claude used Edit: ~/test/index.html*
 
 **Claude:**
 
-The prompt is in the code block above, ready to copy.
+I've built the landing page as a single self-contained file: `~/test/index.html`
+
+I checked screenshots at desktop and 390px phone width. The layout holds with no sideways scrolling. The last small change (fitting the two reminder buttons on one row on small phones) wasn't re-screenshotted.
+
+**What's on the page**
+- **Top section:** the headline "Help Mum through the day, even when you can't be there." beside a waitlist signup. Next to it is a working preview of the screen the parent sees: today's date, a big clock, and a reminder with a family photo. Visitors can tap through a sample day and press "Done" or "Remind me later" to see the response.
+- **Reminders & routines:** an example of a day as the caregiver sets it up, showing done and missed reminders and the alert you'd get. Three short points sit beside it.
+- **Memory aids:** a wall of family photos with handwritten names ("Maya, your granddaughter"), covering caller ID, life stories and family members adding photos.
+- **Closing signup:** a second waitlist form, then a footer.
+- **Accessibility:** it uses Atkinson Hyperlegible, a typeface designed for people with low vision. Buttons are large, keyboard focus is clearly visible, and it works on phones.
+
+**Before you use it, you need to change four things:**
+1. **The waitlist doesn't save emails yet.** A single HTML file has nowhere to store them. Near the bottom of the file, set `WAITLIST_ENDPOINT` to a form service URL such as Formspree. Until then, the form only shows the success message.
+2. **The name "Keepsake" is a placeholder** because you didn't give me one. Find-and-replace it to change it.
+3. **Replace `hello@example.com`** in the footer with your contact address.
+4. **Check the feature claims.** I wrote copy describing features you may not have, such as recording your voice, re-reminding if a reminder is missed, caller ID with photos, and family members adding photos. Check each claim against what the app really does.
+
+I didn't add testimonials, statistics or pricing, so there are no invented facts about your product beyond those feature claims.
 
 
-## 2. A nearly complete prompt
+## 2. A nearly complete request
 
-This one already says what to do, so it should ask little. It asked three questions, all about cases where a wrong guess could rename the wrong files or overwrite one.
+This one already says what to do, so it should ask little. It asked about name clashes and subfolders, where a wrong guess could rename the wrong files, and about the folder itself, because it checked and `~/Photos` did not exist on this machine.
 
 **You:**
 
@@ -80,51 +99,69 @@ This one already says what to do, so it should ask little. It asked three questi
 /clarify write a python script that renames every .jpg in ~/Photos to its EXIF date in YYYY-MM-DD_HHMMSS format, skip files with no EXIF date, dry run by default
 ```
 
+*Claude used Bash: Inspect Photos folder layout and Python setup*
+
 **Claude asks** (AskUserQuestion):
 
-1. **Collisions**: When two photos share the same EXIF timestamp (e.g. burst shots taken in the same second), what should the photo-renaming script do with the second file?
-   - Add suffix (Recommended): Append _1, _2, etc. (2024-05-01_143022_1.jpg) so no file is ever overwritten.
-   - Skip and report: Leave the later file with its original name and list it in the output.
-   - Abort the run: Stop before renaming anything if any collision is detected.
-2. **Subfolders**: Should the photo-renaming script look only at .jpg files directly in ~/Photos, or also inside its subfolders?
-   - Top level only (Recommended): Only files directly inside ~/Photos are renamed.
-   - Recurse subfolders: Walk every subfolder and rename files in place where they sit.
-3. **Extensions**: Which file extensions should the photo-renaming script treat as JPEGs?
-   - All JPEG variants (Recommended): Match .jpg, .jpeg, .JPG and .JPEG, case-insensitively.
-   - Only .jpg/.JPG: Match .jpg in any case, but ignore .jpeg.
-   - Exactly .jpg: Only lowercase .jpg, nothing else.
+1. **Collisions**: When two photos have the same EXIF timestamp (burst shots, or two photos taken in the same second), what should the script do with the second one?
+   - Add suffix (Recommended): Name it 2024-05-01_143022_1.jpg, then _2, and so on. Nothing is ever overwritten.
+   - Skip and report: Leave the second file with its original name and list it in the output.
+   - Stop with an error: Abort the whole run as soon as a name clash is found.
+2. **Subfolders**: Should the script also rename .jpg files inside subfolders of the target folder?
+   - Top level only (Recommended): Only rename files sitting directly in the folder. Subfolders are left alone.
+   - Recurse: Rename .jpg files in every subfolder too, each one staying in its own folder.
+3. **Folder**: There is no ~/Photos folder on this Mac (Python 3.9 is installed, Pillow is not). Which folder should the script use by default? A path argument will override it either way.
+   - ~/Photos as stated: Keep ~/Photos as the default, for when that folder exists, or for a different machine.
+   - ~/Pictures: Use the standard macOS Pictures folder as the default.
 
 **You answered:**
 
-- When two photos share the same EXIF timestamp (e.g. burst shots taken in the same second), what should the photo-renaming script do with the second file? **Add suffix (Recommended)**
-- Should the photo-renaming script look only at .jpg files directly in ~/Photos, or also inside its subfolders? **Top level only (Recommended)**
-- Which file extensions should the photo-renaming script treat as JPEGs? **All JPEG variants (Recommended)**
+- When two photos have the same EXIF timestamp (burst shots, or two photos taken in the same second), what should the script do with the second one? **Add suffix (Recommended)**
+- Should the script also rename .jpg files inside subfolders of the target folder? **Top level only (Recommended)**
+- There is no ~/Photos folder on this Mac (Python 3.9 is installed, Pillow is not). Which folder should the script use by default? A path argument will override it either way. **~/Photos as stated**
+
+*Claude used Write: ~/test/rename_by_exif.py*
 
 **Claude:**
 
-Here is the rewritten prompt:
+Now testing it against hand-built JPEGs (both byte orders, clashes, missing EXIF, an XMP segment, subfolders).
 
-```text
-Write a Python script that renames the JPEG files in ~/Photos to their EXIF date in YYYY-MM-DD_HHMMSS format.
+*Claude used Bash: Build test JPEGs and run dry run, apply, rerun*
 
-Requirements:
-- Only look at files directly inside ~/Photos. Do not go into subfolders.
-- Treat .jpg, .jpeg, .JPG and .JPEG (any case) as JPEGs.
-- Skip files that have no EXIF date.
-- If two files have the same EXIF timestamp, add a numeric suffix (_1, _2, and so on) so no file is ever overwritten, e.g. 2024-05-01_143022.jpg, 2024-05-01_143022_1.jpg.
-- Dry run by default: print what would be renamed without changing anything. Rename files only when the user explicitly asks for it.
+*Claude used Edit: ~/test/rename_by_exif.py*
+
+*Claude used Edit: ~/test/rename_by_exif.py*
+
+*Claude used Bash: Re-run tests after collision fix*
+
+**Claude:**
+
+I wrote the script at `~/test/rename_by_exif.py`.
+
+```
+python3 rename_by_exif.py                  # dry run on ~/Photos
+python3 rename_by_exif.py ~/some/folder    # dry run on another folder
+python3 rename_by_exif.py --apply          # actually rename
 ```
 
-Run it now, edit it first, or just copy it?
+**How it behaves:**
+- **Dry run by default:** it prints `Would rename: IMG_0001.jpg -> 2024-05-01_143022.jpg` and changes nothing until you add `--apply`.
+- **Same-second photos** get `_1`, `_2` and so on. A file is never overwritten. `photo.jpg` and `photo.jpeg` count as a clash too.
+- **Subfolders are left alone.** Only files directly in the folder are renamed.
+- **Files with no EXIF date are skipped and listed.** This includes non-JPEGs with a .jpg name and the `0000:00:00 00:00:00` placeholder some cameras write.
+- **Running it twice is safe.** Files already named after their own date are left alone.
 
-**You:** just copy it
+**Choices I made on my own:**
+- It looks for the date in this order: when the photo was taken (DateTimeOriginal), then when it was digitized, then the plain DateTime field.
+- It matches `.jpg` and `.jpeg` in any letter case, and keeps each file's original extension (`.JPG` stays `.JPG`).
+- It only uses Python's standard library, because Pillow isn't installed here. It runs on your Python 3.9 as it is.
 
-**Claude:**
+**Testing:** I ran it on JPEGs I built myself, covering both EXIF byte orders, a three-way same-second clash, the fallback date field, files with no EXIF or a bogus date, a fake JPEG, a subfolder and a re-run. Every case did what's described above. It hasn't been run on real camera photos yet, so do a dry run on your own folder before using `--apply`.
 
-Okay, the prompt is in the code block above.
+`~/Photos` doesn't exist on this Mac, so with no folder given the script just stops with "Not a folder". To use another location, pass the path when you run it.
 
 
-## 3. A prompt that points at something
+## 3. A request that points at something
 
 "The bug" could be in the repo, so Claude looked first. The folder was empty, so it said so in the first question and asked.
 
@@ -134,59 +171,59 @@ Okay, the prompt is in the code block above.
 /clarify fix the bug
 ```
 
-*Claude used Bash: List working directory contents and git state*
+*Claude used Bash: List working directory contents and git status*
 
 **Claude asks** (AskUserQuestion):
 
-1. **Location**: The current working directory (test) is empty and isn't a git repo, so I couldn't find the code. Where does the buggy code live?
-   - Different folder: I'll give you the path to the project or file
-   - I'll paste it: I'll paste the relevant code into the chat
-   - GitHub repo/PR: I'll give a repo URL, issue, or PR link
-2. **Symptom**: What is the bug? Pick the closest kind; you can type the exact symptom instead.
-   - Error / crash: An exception, stack trace, or failed build. I'll share the error message
-   - Wrong output: It runs but gives the wrong result. I'll describe expected vs. actual
-   - Failing test: A specific test is failing. I'll name it
-   - UI/visual issue: Something looks or behaves wrong on screen
-3. **Done when**: How should the fix be confirmed as done?
-   - Repro + test (Recommended): Reproduce the bug, fix it, and add or update a test that proves it's fixed
-   - Repro only: Reproduce, fix, and show the bug no longer happens; no new tests
-   - Just the fix: Make the code change; I'll verify it myself
-4. **Scope**: How far is the fix allowed to reach?
-   - Minimal fix (Recommended): Smallest change that fixes the bug; no refactoring or unrelated changes
-   - Fix root cause: Fine to touch related code if the real cause is deeper
-   - Diagnose first: Explain the cause and proposed fix before changing any code
+1. **Code**: The current working directory is empty and isn't a git repo, so I can't find the bug myself. Where is the code that has the bug?
+   - Local path: Type the absolute path to the project or file on this machine.
+   - Paste it: Paste the relevant code (and any error output) in your answer.
+   - GitHub repo/PR: Type the repo or PR URL. I'd use the gh CLI, since the GitHub connector failed to connect this session.
+2. **Symptom**: What does the bug do?
+   - Crash / error: An exception, stack trace, or error message. Paste it if you have it.
+   - Wrong output: It runs but gives the wrong result. Say what you expected and what you got.
+   - Build/test fails: Compilation, lint, or a test suite is failing.
+   - UI looks wrong: A visual or interaction problem in a page or app.
+3. **Verify**: How should I confirm the bug is fixed?
+   - Run existing tests (Recommended): Use the project's test suite plus a reproduction of the bug.
+   - Add a regression test: Write a new test that fails before the fix and passes after.
+   - You'll check it: Make the fix and leave verification to you.
+4. **Scope**: How far should the change go?
+   - Minimal fix (Recommended): Change only what's needed to fix this bug.
+   - Fix + nearby issues: Also fix closely related problems I find in the same code.
 
 **You answered:**
 
-- The current working directory (test) is empty and isn't a git repo, so I couldn't find the code. Where does the buggy code live? **I'll paste it**
-- What is the bug? Pick the closest kind; you can type the exact symptom instead. **The signup form submits twice when I press Enter**
-- How should the fix be confirmed as done? **Repro + test (Recommended)**
-- How far is the fix allowed to reach? **Minimal fix (Recommended)**
+- The current working directory is empty and isn't a git repo, so I can't find the bug myself. Where is the code that has the bug? **It's in signup.js: form.addEventListener('keydown', e => { if (e.key === 'Enter') submitSignup(); }); form.addEventListener('submit', e => { e.preventDefault(); submitSignup(); })**
+- What does the bug do? **The signup form submits twice when I press Enter**
+- How should I confirm the bug is fixed? **Run existing tests (Recommended)**
+- How far should the change go? **Minimal fix (Recommended)**
+
+*Claude used Bash: Search for signup.js under the Code folder*
 
 **Claude:**
 
-Here is the rewritten prompt:
+I couldn't find `signup.js` on this machine (I searched `~/Code` and the empty working directory), so I haven't edited the file or run any tests. Here's the fix to apply.
 
-```text
-Fix the bug: the signup form submits twice when I press Enter.
+**Cause:** When you press Enter in a text field, the browser submits the form on its own and fires the `submit` event. Your `keydown` handler calls `submitSignup()` on that same keypress, and then the `submit` handler calls it again, so it runs twice.
 
-I'll paste the relevant code into the chat.
+**Fix:** Delete the `keydown` listener. The `submit` handler already covers Enter, the submit button, and other ways of submitting.
 
-Make the smallest change that fixes the bug. No refactoring or unrelated changes.
-
-Done means: reproduce the double submit, fix it, and add or update a test that proves pressing Enter submits the form only once.
+```js
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  submitSignup();
+});
 ```
 
-Run it now, edit it first, or just copy it?
+If the form has no submit button and Enter seemed to do nothing without the `keydown` handler, add a `<button type="submit">` to the form. Don't keep the key handler as a workaround.
 
-**You:** just copy it
+**Checking it:** Run the project's existing tests. Then type in a field, press Enter, and confirm that one signup request appears in the Network tab, not two.
 
-**Claude:**
-
-Sounds good. The prompt is in the code block above, ready to copy.
+Following your choice of a minimal fix, I didn't add a guard against double-clicking submit. If you want me to make the edit and run the tests myself, send me the file's path.
 
 
-## 4. No prompt at all
+## 4. No request at all
 
 With nothing to clarify, it asks what you want to do and waits.
 
@@ -198,5 +235,5 @@ With nothing to clarify, it asks what you want to do and waits.
 
 **Claude:**
 
-What would you like to do?
+What would you like me to do?
 

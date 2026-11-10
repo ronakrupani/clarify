@@ -8,7 +8,7 @@
     {
       "name": "clarify",
       "source": "./",
-      "description": "Asks you sharp clarifying questions about a prompt before doing any work, then hands back a better prompt.",
+      "description": "Asks you sharp clarifying questions about what you want before starting, so Claude does the work with the details you would have left out.",
       "category": "productivity"
     }
   ]
